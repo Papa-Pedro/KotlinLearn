@@ -1,8 +1,19 @@
 package stepic
 
 import kotlin.math.pow
+import kotlin.math.sqrt
 
 class LessonThree {
+    init {
+        print("""
+            Нажмите:
+            4 - для запуск задач из 4 главы
+            5 - для запуска задача из 5 главы
+            6 - для запуска задача из 6 главы
+            7 - для запуска задача из 7 главы
+            
+        """.trimIndent())
+    }
     /**
      * Функция для решения задачек из степика 3.4
      */
@@ -55,9 +66,8 @@ class LessonThree {
 
 
     }
-
     /**
-     * Функция для решения задачек из степика 3.4
+     * Функция для решения задачек из степика 3.5
      */
     fun solveTask3dot5() {
         /** возвести в квадрат */
@@ -117,13 +127,17 @@ class LessonThree {
         """.trimIndent())
 
     }
-
+    /**
+     * Функция для решения задачек из степика 3.6
+     */
     fun solveTaskThreeDotSix() {
         println("""
             Выберите номер задания:
             1. Вывести последную цифру числа;
             2. Найти число десятков;
             3. Найти сумму цифр для числа
+            4. Вывести перевернутое число
+            5. Нарисовать полый квадрат со стороной n
         """.trimIndent())
         when (readln()) {
             /**
@@ -146,12 +160,162 @@ class LessonThree {
                     ?: "0"
                 print(stringForTaskSix)
             }
-            /** Вывести сумму цифр */
+            /** Вывести сумму цифр числа из трех цифр */
             "3" -> {
+                var input = readln();
+                //решение в котором не важно сколько чисел
+                var sum: Int = 0;
+                for (char in input) {
+                    sum += char.digitToInt();
+                }
+                println(sum)
+                //прямое решение в лоб
+                val number = input.toInt()
+                println("${number % 10 + number / 10 % 10 + number / 100}")
+                //решение через индексы
+                println("${input.get(0).digitToInt() + input.get(1).digitToInt() + input.get(2).digitToInt()}")
 
+                //println("%s\n%s\n%s".format(readln(), readln(), readln()))
+                readln().toInt().let { n -> println("${n % 10 + n / 10 % 10 + n / 100}") }
             }
+            /** Перевернуть число */
+            "4" -> {
+                //решение через строки
+                print("%s".format(readln().reversed()))
+                //решение через число (трехзначное)
+                val number = readln().toInt();
+                println("${number % 10}" + number / 10 % 10 + number / 100)
+                //Решение в одну строку
+                readln().toInt().let { number -> println("${number % 10}" + number / 10 % 10 + number / 100)}
+                //решение вообще без строк
+                println(number % 10 * 100 + number / 10 % 10 * 10 + number / 100)
+            }
+            /** Нарисовать квадрат со сторонаями * размером n */
+            "5" -> {
+                val side = readln().toInt()
+                //c repeat
+                for (i in 0 until side)
+                    if (i == 0 || i == side - 1) {
+                        print("*".repeat(side) + "\n")
+                    } else {
+                        print("*" + " ".repeat(side - 2) + "*\n")
+                    }
+                //без repeat
+                for (i in 0 until side)
+                    if (i == 0 || i == side - 1) {
+                        for (j in 0 until side) print("*")
+                        print("\n")
+                    } else {
+                        print("*")
+                        for (j in 0 until side - 2) print(" ")
+                        print("*\n")
+                    }
+                //через массивы
+                var array: Array<Array<Char?>> = Array(side) { arrayOfNulls(side) }
+                for (i in 0 until side)
+                    if (i == 0 || i == side - 1) {
+                        for (j in 0 until side) array[i][j] = '*'
+                    }
+                    else {
+                        for (j in 0 until side) {
+                            if (j == 0 || j == side-1) array[i][j] = '*'
+                            else array[i][j] = ' '
+                        }
+                    }
+                for (row in array) {
+                    println(row.joinToString(separator = ""))
+                }
+            }
+
+
 
             else -> println("Вы ввели не правильный номер! Пока!")
         }
     }
+    /**
+     * Функция для решения задачек из степика 3.7
+     */
+    fun solveTaskThreeDotSeven() {
+        println("""
+            Выберите номер задания:
+            1. Посчитать радиус круга
+            2. Посчитать площадь треугольника
+            3. Сколь по цельсию, Хъюстон?
+            4. Среднее арифметическое
+            ----- далее придется импортировать import kotlin.math.*
+            5. Перевести биты в байты 
+            6. Вывести перемитр заданного прямоугольно треугольника
+            7. Определить расстояние между двумя точками
+        """.trimIndent())
+        when (readln()) {
+            /** Посчитать радиус круга */
+            "1" -> {
+                val radius = readln().toDouble();
+                println("%f".format(Math.PI * radius.pow(2)))
+                println(radius * radius * 3.14)
+                readln().toDouble().let { "%f".format(Math.PI * radius.pow(2)) }
+            }
+            /** Посчитать площадь треугольника */
+            "2" -> {
+                //в лоб как в курсе
+                val a = readln().toDouble()
+                val b = readln().toDouble()
+                print(a * b * 0.5)
+                //если подумать
+                (readln().toDouble() to readln().toDouble()).let { (a, b) ->
+                    println(a * b * 0.5)
+                }
+            }
+            /** Перевести Кельвины в Цельсии по формуле С = 5 / 9 (F - 32) */
+            "3" -> {
+                //в лоб как в курсе
+                val kelvin = readln().toDouble()
+                println( 5.0 / 9 * (kelvin - 32) )
+                //если подумать
+                println(5.0 / 9 * (readln().toDouble() - 32))
+            }
+            /** Найти среднее арифмитическое двух чисел */
+            "4" -> {
+                val (firstNumber, secondNumber) = (readln().toDouble() to readln().toDouble())
+                print( (firstNumber + secondNumber ) / 2 )
+                //в одну строку
+                (readln().toDouble() to readln().toDouble()).let { (firstNumber, secondNumber) -> println( (firstNumber + secondNumber ) / 2 ) }
+            }
+            /** Перевести биты в байты - вычленить 13 степень */
+            "5" -> {
+                println(readln().toDouble() / 2.0.pow(13.0))
+            }
+            /** Найти катет с = sqrt(a.pow(2) + b.pow(2), потом перемитр как сумма всех сторон
+             * param - a and b даются на входе
+             * */
+            "6" -> {
+                //Решение в лоб
+                val a = readln().toDouble();
+                val b = readln().toDouble();
+                val c = sqrt(a.pow(2) + b.pow(2))
+                println( a + b + c)
+                (readln().toDouble() to readln().toDouble()).let { (a, b) -> println("%.2f".format( a + b + sqrt(a.pow(2) + b.pow(2)) ) ) }
+            }
+            /** Определить расстояние между двумя точками по формуле: sqrt( (x1 - x2).pow(2) + (y1 - y2).pow(2)
+             * param - передаеются в порядке x1 y1 x2 y2
+             */
+            "7" -> {
+                val firstDot: List<Double> = listOf(
+                    readln().toDouble(),
+                    readln().toDouble()
+                )
+                val secondDot: List<Double> = listOf(
+                    readln().toDouble(),
+                    readln().toDouble()
+                )
+                print( sqrt( (firstDot[0] - secondDot[0]).pow(2) + (firstDot[1] - secondDot[1]).pow(2) ) )
+            }
+            else -> println("Введен символ не из списка, пока!")
+            }
+
+
+    }
+
+
+
 }

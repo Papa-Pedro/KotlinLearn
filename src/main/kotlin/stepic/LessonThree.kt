@@ -1,17 +1,18 @@
 package stepic
 
+import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.sqrt
 
 class LessonThree {
     init {
-        print("""
+        println("""
             Нажмите:
             4 - для запуск задач из 4 главы
             5 - для запуска задача из 5 главы
             6 - для запуска задача из 6 главы
             7 - для запуска задача из 7 главы
-            
+            8 - для запуска задача из 8 главы
         """.trimIndent())
     }
     /**
@@ -246,6 +247,7 @@ class LessonThree {
             5. Перевести биты в байты 
             6. Вывести перемитр заданного прямоугольно треугольника
             7. Определить расстояние между двумя точками
+            8. Определить расстояние в Манхетане
         """.trimIndent())
         when (readln()) {
             /** Посчитать радиус круга */
@@ -310,10 +312,80 @@ class LessonThree {
                 )
                 print( sqrt( (firstDot[0] - secondDot[0]).pow(2) + (firstDot[1] - secondDot[1]).pow(2) ) )
             }
+            /** Определить расстояние между двумя точками по формуле: |x1-x2| + |y1-y2|
+             * param - передаеются в порядке x1 y1 x2 y2
+             */
+            "8" -> {/*
+                val firstDot: Map<String, Int> = mapOf(
+                    "x" to readln().toInt(),
+                    "y" to readln().toInt()
+                )
+                val secondDot: Map<String, Int> = mapOf(
+                    "x" to readln().toInt(),
+                    "y" to readln().toInt()
+                )
+                print(abs(firstDot.getValue("x") - secondDot.getValue("x")) + abs(firstDot.getValue("y") - secondDot.getValue("y")))
+*/
+                val x1 = readln().toInt()
+                val y1 = readln().toInt()
+                val x2 = readln().toInt()
+                val y2 = readln().toInt()
+                val result= abs(x1 - x2) + abs(y1 - y2)
+                println(result)
+            }
             else -> println("Введен символ не из списка, пока!")
             }
 
 
+    }
+
+    fun solveTaskThreeDotEight() {
+        println("""
+            Выберите номер задания:
+            1. Найти сумму и произведение трех чисел
+            2. Найти число сотен
+            3. Арифмитическая прогрессия
+            4. Найти сумму последних трех цифр
+            5. Найти гипотенузу по катетам
+        """.trimIndent())
+        when (readln()) {
+            "1" -> {
+                val inputList = List(3) { readln().toInt() }
+                println("${inputList.sum()} ${inputList.reduce(Int :: times)}")
+
+            }
+            "2" -> {
+                val number = readln().toInt()
+                println(number / 100 % 10)
+            }
+            /**  Найти n-ый член арифмитической прогрессии по формуле
+             * аN = a1 + d * ( n - 1 )
+             * param - на вход a1, d and n
+             */
+            "3" -> {
+                val firstA = readln().toInt();
+                val d = readln().toInt()
+                val n = readln().toInt()
+                print("${firstA + d * ( n - 1 )}")
+            }
+            "4" -> {
+                val number = readln().reversed();
+                val sum = (number.getOrNull(0)?.digitToIntOrNull() ?: 0) +
+                        (number.getOrNull(1)?.digitToIntOrNull() ?: 0) +
+                        (number.getOrNull(2)?.digitToIntOrNull() ?: 0)
+                print("$sum")
+
+            }
+            /** Найти гипотенузу по формуле:
+             * с = sqrt ( a.pow(2) + b.pow(2) )
+             */
+            "5" -> {
+                val a = readln().toInt()
+                val b = readln().toInt()
+                println(sqrt( a.toDouble().pow(2)  + b.toDouble().pow(2)))
+            }
+            else -> println("Вы ввели невалидный символ")
+        }
     }
 
 

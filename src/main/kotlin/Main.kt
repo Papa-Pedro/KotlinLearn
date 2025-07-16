@@ -2,11 +2,10 @@ import stepic.IssueFromStepic
 
 
 fun main() {
-    print("""
+    println("""
         Какой урок вы хотите запустить?
         1. Пузырьковую сортировку
         3. Третий урок
-        
     """.trimIndent())
     when(readln()) {
         /**
@@ -27,7 +26,9 @@ fun choseChapterLessonThree() {
         "4" -> issueFromStepic.lessonThree.solveTask3dot4()
         "5" -> issueFromStepic.lessonThree.solveTask3dot5()
         "6" -> issueFromStepic.lessonThree.solveTaskThreeDotSix();
-        else -> issueFromStepic.lessonThree.solveTaskThreeDotSeven()
+        "7" -> issueFromStepic.lessonThree.solveTaskThreeDotSeven()
+        "8" -> issueFromStepic.lessonThree.solveTaskThreeDotEight()
+        else -> println("Вы ввели невалидный символ")
     }
 }
 

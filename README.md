@@ -7,6 +7,7 @@
 3. Пузырьковая сортировка расположенна в отдельном файле BubbleSort
 
 ==================English============================
+
 Here is a solution to problems using stepik https://stepik.org/lesson/849319 and bubble sorting.
 According to the file structure:
 1. Each separate lesson in a separate file, for example lesson 4 in the LessonFour file

@@ -8,17 +8,26 @@ class LessonThree {
     init {
         println("""
             Нажмите:
-            4 - для запуск задач из 4 главы
-            5 - для запуска задача из 5 главы
-            6 - для запуска задача из 6 главы
-            7 - для запуска задача из 7 главы
-            8 - для запуска задача из 8 главы
+            1 - для запуск задач из 4 главы
+            2 - для запуска задача из 5 главы
+            3 - для запуска задача из 6 главы
+            4 - для запуска задача из 7 главы
+            5 - для запуска задача из 8 главы
         """.trimIndent())
+
+        when(readln()) {
+            "1" -> solveTask3dot4()
+            "2" -> solveTask3dot5()
+            "3" -> solveTaskThreeDotSix();
+            "4" -> solveTaskThreeDotSeven()
+            "5" -> solveTaskThreeDotEight()
+            else -> println("Вы ввели невалидный символ")
+        }
     }
     /**
      * Функция для решения задачек из степика 3.4
      */
-    fun solveTask3dot4() {
+    private fun solveTask3dot4() {
         //Приветсвие
         print("Привет, %s".format(readln()));
         //Повторяет введеное слово на экран со словами « - лучшая книга!»
@@ -70,7 +79,7 @@ class LessonThree {
     /**
      * Функция для решения задачек из степика 3.5
      */
-    fun solveTask3dot5() {
+    private fun solveTask3dot5() {
         /** возвести в квадрат */
         var number1 = readln().toDouble()
         print(number1.pow(2).toInt())
@@ -131,7 +140,7 @@ class LessonThree {
     /**
      * Функция для решения задачек из степика 3.6
      */
-    fun solveTaskThreeDotSix() {
+    private fun solveTaskThreeDotSix() {
         println("""
             Выберите номер задания:
             1. Вывести последную цифру числа;
@@ -236,7 +245,7 @@ class LessonThree {
     /**
      * Функция для решения задачек из степика 3.7
      */
-    fun solveTaskThreeDotSeven() {
+    private fun solveTaskThreeDotSeven() {
         println("""
             Выберите номер задания:
             1. Посчитать радиус круга
@@ -339,7 +348,7 @@ class LessonThree {
 
     }
 
-    fun solveTaskThreeDotEight() {
+    private fun solveTaskThreeDotEight() {
         println("""
             Выберите номер задания:
             1. Найти сумму и произведение трех чисел

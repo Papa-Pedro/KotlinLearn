@@ -1,4 +1,5 @@
 import stepic.IssueFromStepic
+import stepic.lessonFour.LogicalOperation
 
 
 fun main() {
@@ -6,7 +7,9 @@ fun main() {
         Какой урок вы хотите запустить?
         1. Пузырьковую сортировку
         3. Третий урок
+        4. Четвертый урок
     """.trimIndent())
+    val issueFromStepic = IssueFromStepic();
     when(readln()) {
         /**
          * Пузырьковая сортировка по возрастанию
@@ -16,19 +19,10 @@ fun main() {
             val bubbleSort = BubbleSort();
             bubbleSort.sortingArray()
         }
-        else -> choseChapterLessonThree();
-    }
-}
+        "3" -> issueFromStepic.lessonThree
+        "4" -> issueFromStepic.lessonFour
 
-fun choseChapterLessonThree() {
-    val issueFromStepic = IssueFromStepic();
-    when(readln()) {
-        "4" -> issueFromStepic.lessonThree.solveTask3dot4()
-        "5" -> issueFromStepic.lessonThree.solveTask3dot5()
-        "6" -> issueFromStepic.lessonThree.solveTaskThreeDotSix();
-        "7" -> issueFromStepic.lessonThree.solveTaskThreeDotSeven()
-        "8" -> issueFromStepic.lessonThree.solveTaskThreeDotEight()
-        else -> println("Вы ввели невалидный символ")
+        else -> LogicalOperation();//println("You pressed the wrong button, bye!");
     }
 }
 

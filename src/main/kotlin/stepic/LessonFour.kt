@@ -1,5 +1,0 @@
-package stepic
-
-class LessonFour {
-
-}

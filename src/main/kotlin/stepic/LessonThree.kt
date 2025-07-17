@@ -205,11 +205,8 @@ class LessonThree {
                 val side = readln().toInt()
                 //c repeat
                 for (i in 0 until side)
-                    if (i == 0 || i == side - 1) {
-                        print("*".repeat(side) + "\n")
-                    } else {
-                        print("*" + " ".repeat(side - 2) + "*\n")
-                    }
+                    if (i == 0 || i == side - 1) print("*".repeat(side) + "\n")
+                    else print("*" + " ".repeat(side - 2) + "*\n")
                 //без repeat
                 for (i in 0 until side)
                     if (i == 0 || i == side - 1) {

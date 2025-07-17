@@ -36,6 +36,7 @@ class BubbleSort {
      *
      * @param array - массив для сортировки
      * @param size - до какого элемента сортируем
+     * @return array - отсортированный массив
      */
     private fun bubbleSortAtRecursion(array: IntArray, size: Int): String {
         for (i in 0 until  size - 1 ) {

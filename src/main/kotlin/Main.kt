@@ -21,8 +21,7 @@ fun main() {
         }
         "3" -> issueFromStepic.lessonThree
         "4" -> issueFromStepic.lessonFour
-
-        else -> LogicalOperation();//println("You pressed the wrong button, bye!");
+        else -> LogicalOperation() //println("You pressed the wrong button, bye!");
     }
 }
 

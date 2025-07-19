@@ -145,6 +145,7 @@ class LogicalOperation {
         )
     }
 
+
     /** Define beat bishop figure or not
      * if definition between the coordinate bishop (bishopColumn, bishopRow)
      * and figure (figureColumn, figureRow) equal print "YES"

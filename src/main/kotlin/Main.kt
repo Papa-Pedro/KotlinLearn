@@ -1,5 +1,6 @@
 import stepic.IssueFromStepic
 import stepic.lessonFour.LogicalOperation
+import stepic.lessonFour.NestedCondition
 
 
 fun main() {
@@ -21,7 +22,7 @@ fun main() {
         }
         "3" -> issueFromStepic.lessonThree
         "4" -> issueFromStepic.lessonFour
-        else -> LogicalOperation() //println("You pressed the wrong button, bye!");
+        else -> NestedCondition() //println("You pressed the wrong button, bye!");
     }
 }
 
